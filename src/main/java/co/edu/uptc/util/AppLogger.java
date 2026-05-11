@@ -38,17 +38,17 @@ public final class AppLogger {
 
                 LogManager.getLogManager().reset();
                 Logger rootLogger = Logger.getLogger("");
-                rootLogger.setLevel(Level.ALL);
+                rootLogger.setLevel(Level.SEVERE);
 
                 Formatter formatter = new SimpleLineFormatter();
 
                 ConsoleHandler consoleHandler = new ConsoleHandler();
-                consoleHandler.setLevel(Level.INFO);
+                consoleHandler.setLevel(Level.SEVERE);
                 consoleHandler.setFormatter(formatter);
                 rootLogger.addHandler(consoleHandler);
 
-                FileHandler fileHandler = new FileHandler(logPath.toString(), true);
-                fileHandler.setLevel(Level.ALL);
+                FileHandler fileHandler = new FileHandler(logPath.toString(), false);
+                fileHandler.setLevel(Level.SEVERE);
                 fileHandler.setFormatter(formatter);
                 rootLogger.addHandler(fileHandler);
 
@@ -57,7 +57,7 @@ public final class AppLogger {
                                 "Uncaught exception in thread " + thread.getName(), throwable));
 
                 initialized = true;
-                Logger.getLogger(AppLogger.class.getName()).info("Logging configurado en " + logPath);
+                Logger.getLogger(AppLogger.class.getName()).severe("Logging configurado en " + logPath);
             } catch (IOException exception) {
                 System.err.println("No se pudo configurar logging: " + exception.getMessage());
             }
