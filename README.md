@@ -7,7 +7,7 @@ Juego de PinPong en Java + Swing (PinPong/Breakout pequeño). Sigue el patrón M
 
 Requisitos
 ----------
-- Java 21
+- Java 17 o superior
 - Maven
 
 Compilar
@@ -18,14 +18,28 @@ mvn clean compile
 
 Ejecutar
 -------
-Desde el JAR generado (si empaquetas) o con `mvn exec`:
+Opcion recomendada (Windows y Linux):
 
 ```bash
-mvn -q -DskipTests compile
+mvn clean compile
+mvn exec:java
+```
+
+Si deseas ejecutar manualmente por classpath, usa el separador correcto por sistema operativo.
+
+Windows (PowerShell/cmd):
+
+```bash
 java -cp target/classes;target/dependency/* co.edu.uptc.App
 ```
 
-O usando `mvn exec:java` si está configurado.
+Linux/macOS (bash/zsh):
+
+```bash
+java -cp target/classes:target/dependency/* co.edu.uptc.App
+```
+
+Nota: tambien puedes usar la ejecucion manual por classpath mostrada arriba.
 
 Notas
 -----
